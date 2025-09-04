@@ -1,0 +1,18 @@
+# Base
+title:       Bash Fu - Styleguide
+tagline:     An opinionated Bash Styleguide
+description: A styleguide crafted over 20 years
+url:         https://style.bashfu.com/
+theme:       jekyll-theme-minimal
+
+# Author
+author:
+  name:      Krayon
+  url:       https://krayon.me/
+
+# Gems
+#plugins:
+#  - jekyll-paginate
+
+# Custom vars
+#version:     1.1.0
