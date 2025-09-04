@@ -1,1 +1,1 @@
-gem "jekyll-remote-theme"
+gem "https://github.com/krayon/jekyll-remote-theme"
