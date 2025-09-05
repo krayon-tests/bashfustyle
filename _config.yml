@@ -1,7 +1,7 @@
 # Base
 title:          Bash Fu - Styleguide
-tagline:        An opinionated Bash Styleguide
-description:    A styleguide crafted over 20 years
+tagline:        An opinionated bash scripting styleguide crafted over 20 years
+description:    An opinionated bash scripting styleguide crafted over 20 years
 url:            https://style.bashfu.com/
 #theme:          jekyll-theme-minimal
 remote_theme:   krayon/jekyll-theme-tactile

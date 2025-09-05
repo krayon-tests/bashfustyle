@@ -1,5 +1,5 @@
 # Bash with Style
-## an opinionated Bash Styleguide
+#### _(an opinionated bash scripting styleguide crafted over 20 years)_
 
 ----
 # Introduction
