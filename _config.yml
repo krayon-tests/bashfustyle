@@ -1,15 +1,18 @@
 # Base
-title:        Bash Fu - Styleguide
-tagline:      An opinionated Bash Styleguide
-description:  A styleguide crafted over 20 years
-url:          https://style.bashfu.com/
-#theme:        jekyll-theme-minimal
-remote_theme: krayon/jekyll-theme-tactile
+title:          Bash Fu - Styleguide
+tagline:        An opinionated Bash Styleguide
+description:    A styleguide crafted over 20 years
+url:            https://style.bashfu.com/
+#theme:          jekyll-theme-minimal
+remote_theme:   krayon/jekyll-theme-tactile
+
+# Theme specifics: Tactile
+show_downloads: false
 
 # Author
 author:
-  name:       Krayon
-  url:        https://krayon.me/
+  name:         Krayon
+  url:          https://krayon.me/
 
 # Gems
 plugins:
