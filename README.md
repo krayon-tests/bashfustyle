@@ -19,6 +19,11 @@ For more information on contributing (new feature, bug fix, pull request etc),
 please see [CONTRIBUTING](CONTRIBUTING.md) .
 
 ----
+# Table of Contents
+
+{:toc}
+
+----
 # Background
 
 ## What this styleguide is and isn't
