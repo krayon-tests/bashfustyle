@@ -31,6 +31,10 @@ jobs:
           git fetch origin gh-pages
           echo "git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages \"${ref}\""
           git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages "${ref}"
+          echo 'git log gh-pages'
+          git log gh-pages
+          echo "git log \"${ref}\""
+          git log "${ref}"
           echo "git merge -m 'Auto-generate TOC' \"${ref}\""
           git merge -m 'Auto-generate TOC' "${ref}"
 
