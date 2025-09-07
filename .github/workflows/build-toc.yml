@@ -1,0 +1,51 @@
+# This workflow will build Table of Contents (TOC) for markdown files and
+# commit them to the `gh-pages` branch.
+
+name: build-toc
+
+on:
+  # Allow manual running
+  workflow_dispatch:
+
+  # Automatically run this workflow on commit to `main` branch
+  push:
+    branches:
+      - main
+      - testing
+
+jobs:
+  build-toc:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code base
+      - name: Checkout main branch
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+
+      # Prepare the branch
+      - name: Preparing gh-pages branch
+        run: |
+          git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages ${{ github.ref }}
+          git merge --ff ${{ github.ref }}
+
+      # Retrieve fast markdown TOC generator
+      - name: Download fast markdown TOC generator
+        run: |
+          wget -q https://raw.githubusercontent.com/krayon/qdnxtools/refs/heads/main/markdown-toc-creator.bash
+          chmod +x markdown-toc-creator.bash
+
+      # Generate the TOCs
+      - name: Generate TOCs
+        run: |
+          cp -a "README.md" "README.src"
+          ./markdown-toc-creator.bash <"README.src" >"README.md"
+          rm README.src
+
+      # Commit changes
+      - name: Commit changed files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -u
+          git diff --cached --quiet || git commit -m "Auto-generate TOC"
+          git push
