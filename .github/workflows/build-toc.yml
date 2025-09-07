@@ -34,9 +34,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git fetch origin gh-pages
-          git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages "${ref}"
-          git merge -m 'Auto-generate TOC' "${ref}"
+          git checkout -b gh-pages
 
       # Retrieve fast markdown TOC generator
       - name: Download fast markdown TOC generator
@@ -58,4 +56,4 @@ jobs:
           git config --local user.name  "github-actions[bot]"
           git add -u
           git diff --cached --quiet || git commit -m "Auto-generate TOC"
-          git push origin gh-pages:gh-pages
+          git push origin --force gh-pages:gh-pages
