@@ -17,16 +17,20 @@ jobs:
   build-toc:
     runs-on: ubuntu-latest
 
+    env:
+      - ref: ${{ github.ref }}
+
     steps:
       # Checkout the code base
-      - name: Checkout main branch
+      - name: Checkout ${{ github.ref }} branch
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
       # Prepare the branch
       - name: Preparing gh-pages branch
         run: |
-          git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages ${{ github.ref }}
-          git merge --ff ${{ github.ref }}
+          git fetch origin gh-pages
+          git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages "${{ github.ref }}"
+          git merge --ff "${{ github.ref }}"
 
       # Retrieve fast markdown TOC generator
       - name: Download fast markdown TOC generator
