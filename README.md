@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Bash with Style](#bash-with-style)
+      - [_(an opinionated bash scripting styleguide crafted over 20 years)_](#_an-opinionated-bash-scripting-styleguide-crafted-over-20-years_)
+- [Introduction](#introduction)
+- [Table of Contents](#table-of-contents)
+- [Background](#background)
+  - [What this styleguide is and isn't](#what-this-styleguide-is-and-isnt)
+    - [Shell scripting guide?](#shell-scripting-guide)
+    - [Bash versions](#bash-versions)
+    - [External components](#external-components)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Bash with Style
 #### _(an opinionated bash scripting styleguide crafted over 20 years)_
 
