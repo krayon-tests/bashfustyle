@@ -31,10 +31,13 @@ jobs:
           git branch -avv
           echo 'git remote -vv'
           git remote -vv
-          echo 'git log >log.this.txt'
-          git log >log.this.txt
-          echo 'git log >log.gh-pages.txt'
-          git log >log.gh-pages.txt
+          echo 'git log'
+          git log
+          echo '--------------------'
+          git fetch origin gh-pages
+          echo 'git log gh-pages'
+          git log origin/gh-pages
+          sleep 1
 
       # Prepare the branch
       - name: Preparing gh-pages branch
