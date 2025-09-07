@@ -1,0 +1,50 @@
+# This workflow will build Table of Contents (TOC) for markdown files and
+# commit them to the `gh-pages` branch.
+
+name: build-toc-node
+
+on:
+  # Allow manual running
+  workflow_dispatch:
+
+jobs:
+  build-toc:
+    runs-on: ubuntu-latest
+
+    env:
+      ref: ${{ github.ref }}
+
+    steps:
+      # Checkout the code base
+      - name: Checkout "${ref}" branch
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          # Number of commits to fetch. 0 indicates all history for all branches and tags.
+          # Default: 1
+          fetch-depth: 0
+
+      # Set up node
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Prepare the branch
+      - name: Preparing gh-pages branch
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git checkout -b gh-pages
+
+      # Generate the TOCs
+      - name: Generate TOCs
+        run:  npx doctoc README.md
+
+      # Commit changes
+      - name: Commit changed files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name  "github-actions[bot]"
+          git add -u
+          git diff --cached --quiet || git commit -m "Auto-generate TOC"
+          git push origin --force gh-pages:gh-pages
