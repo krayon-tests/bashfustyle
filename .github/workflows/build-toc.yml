@@ -29,31 +29,13 @@ jobs:
           # Default: 1
           fetch-depth: 0
 
-      - name: check stuff
-        run: |
-          echo 'git branch -avv'
-          git branch -avv
-          echo 'git remote -vv'
-          git remote -vv
-          echo 'git log'
-          git log
-          echo '--------------------'
-          git fetch origin gh-pages
-          echo 'git log gh-pages'
-          git log origin/gh-pages
-          sleep 1
-
       # Prepare the branch
       - name: Preparing gh-pages branch
         run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git fetch origin gh-pages
-          echo "git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages \"${ref}\""
           git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages "${ref}"
-          echo 'git log gh-pages'
-          git log gh-pages
-          echo "git log \"${ref}\""
-          git log "${ref}"
-          echo "git merge -m 'Auto-generate TOC' \"${ref}\""
           git merge -m 'Auto-generate TOC' "${ref}"
 
       # Retrieve fast markdown TOC generator
