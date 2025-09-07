@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      - ref: ${{ github.ref }}
+      ref: ${{ github.ref }}
 
     steps:
       # Checkout the code base
