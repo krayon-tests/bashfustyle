@@ -22,15 +22,17 @@ jobs:
 
     steps:
       # Checkout the code base
-      - name: Checkout ${{ github.ref }} branch
+      - name: Checkout "${ref}" branch
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
       # Prepare the branch
       - name: Preparing gh-pages branch
         run: |
           git fetch origin gh-pages
-          git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages "${{ github.ref }}"
-          git merge --ff "${{ github.ref }}"
+          echo "git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages \"${ref}\""
+          git checkout -b gh-pages origin/gh-pages || git checkout -b gh-pages "${ref}"
+          echo "git merge -m 'Auto-generate TOC' \"${ref}\""
+          git merge -m 'Auto-generate TOC' "${ref}"
 
       # Retrieve fast markdown TOC generator
       - name: Download fast markdown TOC generator
