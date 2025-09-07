@@ -25,6 +25,17 @@ jobs:
       - name: Checkout "${ref}" branch
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
+      - name: check stuff
+        run: |
+          echo 'git branch -avv'
+          git branch -avv
+          echo 'git remote -vv'
+          git remote -vv
+          echo 'git log >log.this.txt'
+          git log >log.this.txt
+          echo 'git log >log.gh-pages.txt'
+          git log >log.gh-pages.txt
+
       # Prepare the branch
       - name: Preparing gh-pages branch
         run: |
